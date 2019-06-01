@@ -20,7 +20,9 @@ using namespace std;
 class MainWindow : public QMainWindow {
   Q_OBJECT
 
- public:
+private slots:
+  void setUnavailableBottoms();
+public:
   explicit MainWindow(QWidget* parent = 0);
   ~MainWindow();
 

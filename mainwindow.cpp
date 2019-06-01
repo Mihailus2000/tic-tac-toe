@@ -13,6 +13,14 @@ void MainWindow::resizeButtonsArray() {
 
 }
 
+void MainWindow::setUnavailableBottoms()
+{
+    for(int i = 0; i < MapSize; i++)
+      for(int j = 0; j < MapSize; j++) {
+        cells[i][j]->setEnabled(false);
+      }
+}
+
 MainWindow::MainWindow(QWidget* parent) :
   QMainWindow(parent),
   ui(new Ui::MainWindow) {
@@ -23,6 +31,9 @@ MainWindow::MainWindow(QWidget* parent) :
 
   // Задаём размер массиву кнопок
   resizeButtonsArray();
+
+  // Связываем дизактивацию всех кнопок с игрой
+  connect(&game,SIGNAL(unavailible_bottoms()),this,SLOT(setUnavailableBottoms()));
 
   // Заполним весь массив кнопок поля NULL
   for(int i = 0; i < MapSize; i++)

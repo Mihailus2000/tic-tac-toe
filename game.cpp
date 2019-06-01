@@ -4,7 +4,7 @@
 #include "game.h"
 
 Game::Game() {
-  // При старте программы сразу начинается новая игра
+  // При старте программы сразу начинается новая игра   
   newGame();
 }
 
@@ -140,6 +140,8 @@ void Game::checkGameOver() {
   switch(state) {
     case X_WIN:
     case O_WIN:
+      emit unavailible_bottoms();
+
       return;
 
     default:

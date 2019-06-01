@@ -3,6 +3,7 @@
 
 #include <QString>
 #include <vector>
+#include <QObject>
 
 const char X = 'X'; //'1';
 const char O = 'O'; //'Y';
@@ -20,7 +21,10 @@ enum State {
 
 // Все что происодит на поле и логика игрового мира
 // Ходы, выйгрыш/проигрыш
-class Game {
+class Game : public QObject{
+
+  Q_OBJECT
+
   State state; // Текущее состояние игры
   // Игровое поле
   std::vector<std::vector<char> > Map;
@@ -44,6 +48,10 @@ class Game {
   const char* getCell(int i, int j);
   void resizeMap();
   void mapResize();
+
+public:
+signals:
+  void unavailible_bottoms();
 };
 
 #endif // GAME_H
