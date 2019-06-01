@@ -20,7 +20,7 @@ void Game::newGame() {
   mapResize();
 
   // Первыми ходят всегда крестики
-  state = O_MOVE;
+  state = X_MOVE;
 
   // Заполняем поле пустыми клетками, без крестиков и ноликов
   for(int i = 0; i < MapSize; i++)
