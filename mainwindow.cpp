@@ -4,7 +4,6 @@
 #include <QFileDialog> // Диалог выбора имени файла
 #include <QMessageBox> // Диалоговое окно с сообщением
 #include "gamesettings.h"
-#include "map_size.h"
 
 void MainWindow::resizeButtonsArray() {
   cells.resize(MapSize);
