@@ -13,13 +13,22 @@ void MainWindow::resizeButtonsArray() {
 
 }
 
-void MainWindow::setUnavailableBottoms()
+void MainWindow::setUnavailableBottoms(bool what)
 {
     for(int i = 0; i < MapSize; i++)
       for(int j = 0; j < MapSize; j++) {
-        cells[i][j]->setEnabled(false);
+        cells[i][j]->setEnabled(what);
       }
 }
+
+//void MainWindow::Server_namePlayerRole(QString role)
+//{
+//    if(role == "X" || role == "O")
+//        ServerGame.chooseYourROLE(role);
+//    else{
+//        QMessageBox::critical(this,"Информация","Что-то от сервера получили непонятную роль");
+//    }
+//}
 
 MainWindow::MainWindow(QWidget* parent) :
   QMainWindow(parent),
@@ -33,17 +42,14 @@ MainWindow::MainWindow(QWidget* parent) :
   resizeButtonsArray();
 
   // Связываем дизактивацию всех кнопок с игрой
-  connect(&game,SIGNAL(unavailible_bottoms()),this,SLOT(setUnavailableBottoms()));
+  connect(&game,SIGNAL(unavailible_bottoms(bool)),this,SLOT(setUnavailableBottoms(bool)));
+
 
   // Заполним весь массив кнопок поля NULL
   for(int i = 0; i < MapSize; i++)
     for(int j = 0; j < MapSize; j++)
       cells[i][j] = NULL;
 
-  // Начало игры
-  qDebug() << "Constructor >>> ";
-  newGame();
-  qDebug() << "<<< Constructor";
 }
 
 MainWindow::~MainWindow() {
@@ -88,6 +94,15 @@ void MainWindow::newGame() { // Новая игра
   updateWindow();
   updateGameButtons();
 }
+
+void MainWindow::newServerGame()
+{
+    ServerGame.newGame();
+    updateWindow();
+    updateGameButtons();
+}
+
+//game.newGame();
 
 void MainWindow::updateGameButtons() {
   int cellSize = 60; // Размер кнопки
@@ -146,3 +161,17 @@ void MainWindow::on_setFieldSize_triggered() {
   newGame();
 }
 
+
+void MainWindow::on_action_2_triggered()
+{
+    // Начало серверной игры
+    qDebug() << "Start multiplay game >>> ";
+    ServerGame.newGame();
+}
+
+void MainWindow::on_action_triggered()
+{
+    // Начало игры
+    qDebug() << "Start single play >>> ";
+    newGame();
+}

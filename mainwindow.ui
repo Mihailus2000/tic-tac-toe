@@ -111,7 +111,8 @@
     <property name="title">
      <string>Игра</string>
     </property>
-    <addaction name="newGameAction"/>
+    <addaction name="action"/>
+    <addaction name="action_2"/>
    </widget>
    <widget class="QMenu" name="menu">
     <property name="title">
@@ -144,6 +145,16 @@
   <action name="setFieldSize">
    <property name="text">
     <string>Выбор размера поля</string>
+   </property>
+  </action>
+  <action name="action">
+   <property name="text">
+    <string>Игра &quot;в одиночку&quot;</string>
+   </property>
+  </action>
+  <action name="action_2">
+   <property name="text">
+    <string>Игра по серверу</string>
    </property>
   </action>
  </widget>

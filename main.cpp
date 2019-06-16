@@ -2,6 +2,7 @@
 #include <QApplication>
 
 int MapSize = 3;
+QString YOUR_ROLE = "E";
 
 int main(int argc, char* argv[]) {
   QApplication a(argc, argv);
@@ -9,9 +10,7 @@ int main(int argc, char* argv[]) {
   MainWindow w;
   w.show();
 
-  // Мы можем создать второе такое же окно
-  //MainWindow w2;
-  //w2.show();
+
 
   // Обработка событий - основной цикл работы программы
   return a.exec();
